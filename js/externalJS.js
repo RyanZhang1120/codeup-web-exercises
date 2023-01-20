@@ -1,5 +1,6 @@
 'use strict';
 
+alert('Hello from the external javascript');
 alert('welcome to my Website');
 var color = prompt('What is you favorite color?');
 alert('Great, ' + color + " is my favorite color too!");
