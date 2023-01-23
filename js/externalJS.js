@@ -5,28 +5,32 @@ alert('welcome to my Website');
 var color = prompt('What is you favorite color?');
 alert('Great, ' + color + " is my favorite color too!");
 //1. creat the days movie rented
-var little_mermaid = 3;
-var brother_bear = 5;
-var hercules = 1;
-//then creat the rent price each day
-var price = 3;
-//creat the total price
-var total_price = (little_mermaid + brother_bear + hercules) * price;
-//get the total price and alert to users
-alert('For the question 1, the toal price is: ' +'$' + total_price);
+var littleMermaidDays = prompt("How long do you rent the little mermaid?");
+
+var brotherBearDays = prompt("Nice - how many days would you like to rent brother bear?");
+
+var herculesDays = prompt("Finally, Hercules - how many days may I rent that to you?");
+
+var dailyRate = 3;
+
+var total_pay = (Number(littleMermaidDays) + Number(brotherBearDays) + Number(herculesDays)) * dailyRate;
+
+alert((littleMermaidDays * dailyRate) + " is how much for Little Mermaid. " + (brotherBearDays * dailyRate) +
+    " is how much you owe for brother bear. Finally, you will be charged " + (herculesDays * dailyRate) +
+    " for hercules, and you will pay " + total_pay );
 
 //2. creat the pay amount from each company
-var google = 400;
-var amazon = 380;
-var facebook = 350;
-//creat working hours
-var wh_google = 6;
-var wh_amazon = 4;
-var wh_facebook = 10;
+var google = prompt('how much does google pay hourly?');
+var wh_google = prompt('how many have you worked for google?');
+var amazon = prompt('how much does amazon pay hourly?');
+var wh_amazon = prompt('how many have you worked for amazon?');
+var facebook = prompt('how much does facebook pay hourly?');
+var wh_facebook = prompt('how many have you worked for facebook?');
 //total payment
 var payment = google * wh_google + amazon * wh_amazon + facebook * wh_facebook;
 //get the payment and alert to users
-alert('For the question 2, the payment is: ' +'$' + payment);
+alert('google will pay $' + google * wh_google + ' amazon will pay $' + amazon * wh_amazon + ', and facebook will pay $'
++ facebook * wh_facebook + '. total payment will be $' + payment);
 
 //3. check if the class is full
 var fullclass = confirm('Is the class full?');
