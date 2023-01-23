@@ -22,7 +22,7 @@
  * console.logging the function's return value
  */
 function analyzeColor() {
-    var color = prompt('Input a color')
+    var color = prompt('Input a color');
     if (color === 'red') {
         console.log('red is the color of blood');
     } else if (color === 'blue') {
@@ -131,7 +131,7 @@ var luckyNumber = Math.floor(Math.random() * 6);
 var totalBill = prompt('How much is the bill?')
 function calculateTotal(lucky_number, amount) {
     console.log('Luck number is ' + lucky_number);
-    console.log('Total bill is ' + amount)
+    console.log('Total bill is ' + amount);
     if (lucky_number === 0) {
         console.log(amount);
     } else if(lucky_number === 1) {
@@ -183,18 +183,18 @@ function checkpositive (c) {
     } else if (c < 0) {
         alert('the number is negative');
     } else {
-        alert('the number is 0')
+        alert('the number is 0');
     }
 }
 function checkNumber() {
     if (confirm('if you would like to enter a number?')) {
-        var number = prompt('what\'s your number?')
+        var number = prompt('what\'s your number?');
         checkodd(number);
         plus100(number);
         checkpositive(number);
     }
     else {
-        console.log('Okay, number game is no fun')
+        console.log('Okay, number game is no fun');
     }
 }
 checkNumber();
