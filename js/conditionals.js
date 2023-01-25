@@ -174,7 +174,7 @@ function checkodd (a) {
 }
 
 function plus100 (b) {
-    alert('the number plus 100 is ' + (Number(b) + 100));
+    alert('the number plus 100 is ' + (parseFloat(b) + 100));
 }
 
 function checkpositive (c) {
