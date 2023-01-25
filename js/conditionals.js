@@ -189,11 +189,15 @@ function checkpositive (c) {
 function checkNumber() {
     if (confirm('if you would like to enter a number?')) {
         var number = prompt('what\'s your number?');
-        checkodd(number);
-        plus100(number);
-        checkpositive(number);
-    }
-    else {
+        if (typeof(number) === 'number') {
+            checkodd(number);
+            plus100(number);
+            checkpositive(number);
+        } else {
+            alert('It\'s not a number')
+        }
+
+    } else {
         console.log('Okay, number game is no fun');
     }
 }
