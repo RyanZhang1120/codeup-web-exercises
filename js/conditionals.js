@@ -79,7 +79,6 @@ switch (randomColor) {
         break;
     default:
         console.log('I don\'t know anything about ' + randomColor );
-        break;
 }
 /**
  * TODO:
