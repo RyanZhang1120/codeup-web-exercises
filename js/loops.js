@@ -23,3 +23,12 @@ for(var i = 1; i <= 10; i++) {
 }
 
 // 4.
+for(var i = 1; i < 10; i++) {
+    console.log(String(i).repeat(i));
+}
+
+// 5.
+for(i = 20; i > 0; i--) {
+    console.log(i * 5);
+}
+
