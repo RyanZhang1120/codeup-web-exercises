@@ -2,18 +2,20 @@
 
 // Break and continue
 function checkOdd(number) {
-    if(number % 2 !== 0) {
+    if(number % 2 != 0) {
         return true;
     } else {
         return false;
     }
 }
-do {
-    var user = prompt('please enter an odd number between 1 and 50');
-    if (checkOdd(user)) {
+//&& (user >= 1) && (user <= 50)
+var user;
+while(true){
+    user = Number(prompt('please enter an odd number between 1 and 50'));
+    if (checkOdd(user) && user >= 1 && user <= 50) {
         break;
     }
-} while(checkOdd(user) == false)
+}
 
 console.log('Number to skip is: ' + user);
 console.log('')
