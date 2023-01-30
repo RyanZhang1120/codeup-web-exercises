@@ -9,7 +9,6 @@ function showMultiplicationTable(input) {
 showMultiplicationTable(7);
 
 // 3.
-var random = Math.floor(Math.random() * 200) + 20;
 function checkEven(number) {
     if (number % 2 == 0) {
         return 'even';
