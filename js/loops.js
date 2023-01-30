@@ -26,6 +26,14 @@ for(var i = 1; i < 10; i++) {
     console.log(String(i).repeat(i));
 }
 
+for(var i = 1; i < 10; i++) {
+    var iString = "";
+    for(var n = 1; n <= i; n++) {
+        iString += i;
+    }
+    console.log(iString);
+}
+
 // 5.
 for(i = 20; i > 0; i--) {
     console.log(i * 5);
