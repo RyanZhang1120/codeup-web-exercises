@@ -11,6 +11,11 @@
      *  > console.log(person.firstName) // "Rick"
      *  > console.log(person.lastName) // "Sanchez"
      */
+    var person = {};
+    person.firstName = "Ryan";
+    person.lastName = "Zhang";
+    console.log(person.firstName);
+    console.log(person.lastName);
 
     /**
      * TODO:
@@ -21,7 +26,10 @@
      * Example
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
-
+    person.sayHello = function () {
+        return "Hello from " + this.firstName + " " + this.lastName + "!";
+    }
+    console.log(person.sayHello());
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
      * more than $200. If a shopper spends more than $200, they get a 12%
@@ -36,12 +44,18 @@
      * and console.log the relevant messages for each person
      */
 
-    // var shoppers = [
-    //     {name: 'Cameron', amount: 180},
-    //     {name: 'Ryan', amount: 250},
-    //     {name: 'George', amount: 320}
-    // ];
-
+    var shoppers = [
+         {name: 'Cameron', amount: 180},
+         {name: 'Ryan', amount: 250},
+         {name: 'George', amount: 320}
+    ];
+    shoppers.forEach(function (shopper) {
+        if(shopper.amount > 200) {
+            console.log(shopper.name + ' bought $' + shopper.amount + ' and paid $' + shopper.amount * .88 + ' after discount.');
+        } else {
+            console.log(shopper.name + ' bought $' + shopper.amount + ' without discount.');
+        }
+    })
     /** TODO:
      * Create an array of objects that represent books and store it in a
      * variable named `books`. Each object should have a title and an author
@@ -54,7 +68,32 @@
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
-
+    var books = [
+        {
+            title:'all about love',
+            author: {
+                firstName: 'Bell',
+                lastName: 'Hooks'
+            }
+        },
+        {
+            title:'The Good Life',
+            author: {
+                firstName: 'Robert',
+                lastName: 'Waldinger'
+            }
+        },
+        {
+            title:'THINKING, FAST AND SLOW',
+            author: {
+                firstName: 'Daniel',
+                lastName: 'Kahneman'
+            }
+        }
+    ];
+    console.log(books[1].title);
+    console.log(books[1].author.firstName);
+    console.log(books[1].author.lastName);
     /**
      * TODO:
      * Loop through the books array and output the following information about
@@ -79,7 +118,11 @@
      *      ---
      *      ...
      */
-
+    books.forEach(function (book, index) {
+        console.log('Book # ' + (index + 1));
+        console.log('Title: ' + book.title);
+        console.log('Author: ' + book.author.firstName + ' ' + book.author.lastName);
+    })
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
@@ -90,5 +133,17 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+    function createBook(title, author) {
+        var book = {
+            title: title,
+            author: author
+        }
+        return book;
+    }
+    var book = createBook('haha', 'wow');
+    function showBookInfo(object) {
+        console.log(object);
+    }
+    showBookInfo(book);
 
 })();
