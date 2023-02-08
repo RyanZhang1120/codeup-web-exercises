@@ -1,3 +1,43 @@
 .fancy-header {
     color: red;
 }
+header {
+    text-decoration: underline;
+    color: #47ecff;
+}
+body {
+    background-image: url("/img/background.jpg");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: auto;
+    font-family:"Noto Sans Warang Citi", Helvetica;
+}
+ol, ul {
+    list-style: upper-alpha;
+}
+table, td, th {
+    border: 1px solid;
+}
+table{
+    font-size: 20px;
+    border-collapse: collapse;
+}
+/* unvisited link (:link) */
+a:link {
+    color:red;
+}
+
+/* visited link (:visited) */
+a:visited {
+    color:black;
+}
+
+/* mouse hover over link (:hover) */
+a:hover {
+    color:blue;
+}
+
+/* active/selected link (:active) */
+a:active {
+    color:green;
+}
