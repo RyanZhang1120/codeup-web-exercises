@@ -9,7 +9,7 @@ body {
     background-image: url("/img/background.jpg");
     background-repeat: repeat;
     background-position: center;
-    background-size: auto;
+    background-size: cover;
     font-family:"Noto Sans Warang Citi", Helvetica;
 }
 ol, ul {
