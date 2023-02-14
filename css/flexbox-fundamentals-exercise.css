@@ -34,12 +34,14 @@ h2, h3 {
     padding: 1em;
     margin: 0 auto;
     /* enter needed declarations here */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 section {
     /* enter needed declarations here */
     display: flex;
-    margin: 15px 0;
 }
 
 section:nth-of-type(1) {
@@ -79,13 +81,13 @@ section:nth-of-type(1) div:last-child {
 
 section:nth-of-type(3) {
     /* enter needed declarations here */
-    justify-content: flex-end;
+    display: flex;
+    align-items: center;
 }
 
 section:nth-of-type(3) h3 {
     /* enter needed declarations here */
-    margin-top: 13px;
-    flex-grow: 1;
+    flex-grow: 2;
 }
 
 .orange-circle {
@@ -125,6 +127,7 @@ section:nth-of-type(6) {
     /* enter needed declarations here */
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
 }
 
 .grey-box {
