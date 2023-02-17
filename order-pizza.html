@@ -24,13 +24,78 @@
     <a href="#"><p>Sign Up!</p></a>
 </nav>
 <div class="container">
-    <div class="background-image">
-        <a><img src="img/pizza.png" alt=""></a>
-        <a class="welcome">Welcome to Pizza World!</a>
+    <div class="jumbotron">
+        <h1>Welcome to Pizza World!</h1>
     </div>
     <h2 class="build">Build your own pizza!</h2>
+    <div class="tabs">
+        <div class="tab">
+            <input type="radio" name="css-tabs" id="size" checked class="tab-switch">
+            <label for="size" class="tab-label">Size and Crust</label>
+            <div class="tab-content">
+                <ul>
+                    <li>Hand Tossed</li>
+                        <label for="small"></label>
+                        <input id="small" type="checkbox" value="small" name="size">Small(10")
 
+                        <label for="hand-medium"></label>
+                        <input id="hand-medium" type="checkbox" value="hand-medium" name="size">Medium(12")
+                    <li>Crisp Thin</li>
+                        <label for="crisp-medium"></label>
+                        <input id="crisp-medium" type="checkbox" value="crisp-medium" name="size">Medium(12")
+
+                        <label for="large"></label>
+                        <input id="large" type="checkbox" value="large" name="size">Large(14")
+                </ul>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" name="css-tabs" id="cheese" class="tab-switch">
+            <label for="cheese" class="tab-label">Cheese and Sauce</label>
+            <div class="tab-content">
+                <ul>
+                    <li>Cheese</li>
+                        <p>How Much</p>
+                        <select name="cheese">
+                            <option value="light">Light</option>
+                            <option value="normal">Normal</option>
+                            <option value="extra">Extra</option>
+                            <option value="double">Double</option>
+                        </select>
+                    <li>Sauce</li>
+                        <p>What Type?</p>
+                        <select name="sauce-type">
+                            <option value="tomato">Tomato</option>
+                            <option value="marinara">Marinara</option>
+                            <option value="bbq">BBQ</option>
+                            <option value="alfredo">alfredo</option>
+                        </select>
+                        <p>How Much></p>
+                        <select name="sauce-amount">
+                            <option value="light">Light</option>
+                            <option value="normal">Normal</option>
+                            <option value="extra">Extra</option>
+                        </select>
+                </ul>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" name="css-tabs" id="topping" class="tab-switch">
+            <label for="topping" class="tab-label">Toppings</label>
+            <div class="tab-content">
+                <ul>
+                    <li>Choose Meats</li>
+                    <label for="small"></label>
+                        <input id="small" type="checkbox" value="beef" name="meats">Beef
+
+                    <label for="hand-medium"></label>
+                    <input id="hand-medium" type="checkbox" value="hand-medium" name="size">Medium(12")
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <!-- Your custom JS goes here -->
 </body>
