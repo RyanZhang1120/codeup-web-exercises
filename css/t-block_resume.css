@@ -1,0 +1,32 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+h1 {
+    text-align: center;
+    margin: 1.5em;
+}
+.bio {
+    text-align: center;
+}
+.bio>p {
+    width: 100%;
+    padding: 1em;
+}
+.col-md-3 {
+    display: flex;
+    justify-content: center;
+
+}
+.col-md-3 i {
+    margin-top: 4px;
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+hr.line {
+    border:4px solid #5b8532;
+}
+.container h2 {
+    color:royalblue;
+}
