@@ -1,1 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Anton&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #F0F0F0;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.nav-links li {
+    margin:0 0.5em;
+    font-family: 'Abel', sans-serif;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: black;
+}
+.nav-links li img {
+    width: 105px;
+    height: 105px;
+}
+.nav-links .menu {
+    margin-left: auto;
+    margin-right: 10px;
+}
+i {
+    font-size: 35px;
+}
+.button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #E6E6E6;
+}
+.menu {
+    position: relative;
+    display: inline-block;
+}
+.menu-items {
+    display: none;
+    position: absolute;
+    min-width: 50px;
+    z-index: 1;
+}
+.menu-items a {
+    text-decoration: none;
+    font-family: 'Abel', sans-serif;
+    color: black;
+    padding: 6px 0;
+}
+.menu:hover .menu-items {
+    display: block;
+}
+.menu-items a:hover {
+    background-color: #E6E6E6;
+}

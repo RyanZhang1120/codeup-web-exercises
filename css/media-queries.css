@@ -74,8 +74,9 @@ footer a {
     .nav-links {
         display: inline-flex;
         flex-direction: row;
+        align-items: center;
     }
-    .nav-links li {
+    .nav-links li{
         background: none;
         margin: 0 0.5em;
     }
