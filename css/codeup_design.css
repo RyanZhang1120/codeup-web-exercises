@@ -30,6 +30,7 @@ body, .nav-bar {
 .nav-links {
     width: 105px;
     height: 105px;
+    padding: .9em;
 }
 
 .nav-link-item {
@@ -139,10 +140,11 @@ h5 {
     width: 18px;
     border-radius: 50%;
     display: inline-block;
-    line-height: 18px;
+    line-height: 19px;
     font-size: small;
     margin-left: .2em;
     margin-right: .2em;
+    margin-bottom: 1em;
     font-family: 'Anton', sans-serif;
 }
 
@@ -163,5 +165,5 @@ h5 {
 
 
 .selected-images {
-    height: 250px;
+    height: 80%;
 }
