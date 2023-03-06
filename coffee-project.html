@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee</title>
+  <!--bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!--google fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vesper+Libre:wght@400;700&display=swap" rel="stylesheet">
+  <!--stylesheet-->
+  <link rel="stylesheet" href="css/coffee.css">
+</head>
+<body>
+<!--header-->
+<div class="header text-center py-3">
+  <h1 class="banner">Welcome to Zhang's Coffee Shop!</h1>
+</div>
+<main class="container-fluid">
+  <div class="row">
+    <div class="search col-12 col-md-5">
+      <!--search part-->
+      <from class="from-1">
+        <h3 class="search-type text-center my-2 fw-bold">Search your favorite coffee</h3>
+        <label for="roast-selection"></label>
+        <select class="selector w-75 mb-3 mt-0 ms-5" id="roast-selection">
+          <option>All</option>
+          <option>light</option>
+          <option>medium</option>
+          <option>dark</option>
+        </select>
+        <input class="selector w-75 mb-3 ms-5" id="searchCoffee" type="text" placeholder="Search coffee">
+        <input class="myButton w-75 ms-5" id="submit" type="submit" value = "Reset"/>
+      </from>
+      <!--add part-->
+      <from class="from-2">
+        <h3 class="add-title mt-5 mb-0 text-center fw-bold">Add your own coffee</h3>
+        <label for="input-roast"></label>
+        <!--<h3 class="add-title-roast text-center"><small>Select type of roast: </small></h3>-->
+        <div class="add-roast">
+          <select class="selector w-75 ms-5 mb-3" id="input-roast">
+            <option>light</option>
+            <option>medium</option>
+            <option>dark</option>
+          </select>
+        </div>
+        <h3 class="new-coffee text-center"><small>Your new coffee name</small></h3>
+        <div class="inner-form">
+          <input class="selector w-75 ms-5 mb-3" id="input-name" type="text" placeholder="New Coffee Name">
+          <input class="myButton w-75 ms-5 mb-3" id="input-submit" type="button" value="Add Coffee"/>
+        </div>
+      </from>
+      <!--remove part-->
+      <from class="from-3">
+        <h3 class="remove text-center mt-4 my-2 fw-bold">Remove coffee you hate</h3>
+        <input class="selector w-75 mb-3 ms-5" id="remove-name" type="text" placeholder="Coffee to remove">
+        <input class="myButton w-75 ms-5" id="removeButton" type="submit" value = "Remove Coffee"/>
+      </from>
+    </div>
+    <!--coffee list-->
+    <div class="sections col-12 col-md-7">
+      <h3 class="coffee-list-title text-center ms-5 display-6 fw-bold">All coffees</h3>
+      <div class="coffee-list">
+        <div id="coffees"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+</html>
