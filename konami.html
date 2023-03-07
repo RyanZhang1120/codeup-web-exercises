@@ -2,11 +2,18 @@
 <html>
 <head>
   <title>Konami Code</title>
+  <style>
+    /* add a CSS class for the background image */
+    .background-image {
+      background-image: url("img/contra.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
 </head>
 <body>
 <h1>Konami Code</h1>
 <audio id="sound" src="sound/konami.wav"></audio>
-
 
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
@@ -16,8 +23,6 @@
   var konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a', 'Enter'];
 
   var keyHistory = [];
-
-  $('body').css('background-color','skyblue');
 
   $(document).keyup(function(event){
     console.log(event.key);
@@ -31,6 +36,8 @@
     if (keyHistory.toString() === konamiCode.toString()) {
       // if the key history matches the Konami Code, trigger the alert
       $('#sound')[0].play();
+      $('body').addClass('background-image');
+      $('h1').css('color', 'white');
       alert("You have added 30 lives!");
     }
   });
