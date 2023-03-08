@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery-faq</title>
+    <style>
+        .invisible {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<p>Please use the following paint colors for the new house:</p>
+
+<dl>
+  <dt>Who is the director of the National Park Service?</dt>
+    <dd>Charles F. "Chuck" Sams III is the Director of the National Park Service.</dd>
+
+  <dt>What government agency oversees the National Park Service?</dt>
+    <dd>The National Park Service is a bureau of the Department of the Interior. Directly overseeing its operation is the department's Assistant Secretary for Fish, Wildlife and Parks.</dd>
+
+  <dt>How old is the National Park System?</dt>
+    <dd>The National Park Service was created by an act signed by President Woodrow Wilson on August 25, 1916. Yellowstone National Park was established by an act signed by President Ulysses S. Grant on March 1, 1872, as the nation's first national park. View the National Park System timeline.</dd>
+
+  <dt>How many people visit the national parks?</dt>
+    <dd>Total recreation visitors to the national parks in 2021: 297,115,406.</dd>
+
+  <dt>Where can I find a park map?</dt>
+    <dd>You can view maps on specific park websites or find national park, National Park System, National Trails System, and other maps.</dd>
+</dl>
+<button id="btn">Answers</button>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+    $('#btn').click(function () {
+        $('dd').toggleClass('invisible');
+    })
+    $('dt').click(function () {
+        $(this).css('background-color', 'yellow');
+    })
+</script>
+</body>
+</html>
