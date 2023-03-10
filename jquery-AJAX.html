@@ -78,24 +78,24 @@
 
     //refactor above: build my cats a page
 
-    let buildHtml = ""; //Let me store all the HTML I need in here
-
-    data.forEach(function(cat){
-
-      buildHtml += "Name: " + cat.name + " "
-              + "Age : " + cat.age + ". "
-              + "Coat: " + cat.coat + ". "
-              + "Activities: " + cat.activities.toString() + ". ";
-    })
-
-    $("#content").append(buildHtml)
-    $.post("url/postHere").done(function(data){
-        //do some stuff now when done
-    })
-        .fail(function(obj, status, msg){
-            // do stuff here
-        })
-
+  //   let buildHtml = ""; //Let me store all the HTML I need in here
+  //
+  //   data.forEach(function(cat){
+  //
+  //     buildHtml += "Name: " + cat.name + " "
+  //             + "Age : " + cat.age + ". "
+  //             + "Coat: " + cat.coat + ". "
+  //             + "Activities: " + cat.activities.toString() + ". ";
+  //   })
+  //
+  //   $("#content").append(buildHtml)
+  //   $.post("url/postHere").done(function(data){
+  //       //do some stuff now when done
+  //   })
+  //       .fail(function(obj, status, msg){
+  //           // do stuff here
+  //       })
+  //
   })
 
 </script>
