@@ -1,0 +1,2 @@
+const openWeatherKey = 'bfb020052214e60a1e69bf9d431c64c4';
+const mapBoxKey = 'pk.eyJ1IjoicnlhbnpoYW5nMTEyMCIsImEiOiJjbGYyeWd0YmowZHA0M29sZWg1OWR3cWxqIn0.PwLEjldB5WdvL7ndz9Ky0A'
