@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Map</title>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/72ff0bf74d.css" crossorigin="anonymous">
   <!--    Mapbox CDN below-->
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
@@ -13,16 +14,40 @@
             height: 50vh;
             width: 70vw;
         }
+        .joe {
+            background-image: url('img/trader-joe.png');
+            background-size: cover;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
     </style>
 </head>
 <body>
 <div id="map"></div>
-<button id="btn">Zoom it!</button>
+<button id="btn">Zoom it to 5!</button>
+<button id="btn2">Zoom it to 15!</button>
+<button id="btn3">Zoom it to 20!</button>
+<br>
+<form id="#geocode-form">
+    <label for="input">Enter an address</label>
+    <input id="input" placeholder="Enter address here">
+    <button id="btn4" type="submit">Find it</button>
+</form>
+
 
 <script src="js/mapbox-geocoder-utils.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script>
-    let token = "pk.eyJ1IjoicnlhbnpoYW5nMTEyMCIsImEiOiJjbGYyeTlrcjAwaWR0M3BsbTJoNzFieDJhIn0.P9nxoSNUCSqT83MpUTJPDA";
+    let token = "pk.eyJ1IjoicnlhbnpoYW5nMTEyMCIsImEiOiJjbGYyeWd0YmowZHA0M29sZWg1OWR3cWxqIn0.PwLEjldB5WdvL7ndz9Ky0A";
     mapboxgl.accessToken = token;
 
     let map = new mapboxgl.Map(
@@ -34,16 +59,90 @@
         }
     );
     $("#btn").click(function (){
+        map.setZoom(5);
+    })
+    $("#btn2").click(function (){
         map.setZoom(15);
     })
+    $("#btn3").click(function (){
+        map.setZoom(20);
+    })
 
-    let myMarker = new mapboxgl.Marker();
-    myMarker.setLngLat([-122.93800071028194, 47.03298775291821]);
-    myMarker.addTo(map);
-    let myPopup = new mapboxgl.Popup();
-    myPopup.setLngLat([-122.93800071028194, 47.03298775291821]);
-    myPopup.setHTML("<span>My favorite grocery store</span>");
-    myPopup.addTo(map);
+    // let myMarker = new mapboxgl.Marker();
+    // myMarker.setLngLat([-122.93800071028194, 47.03298775291821]).addTo(map);
+    // let myPopup = new mapboxgl.Popup();
+    // myPopup.setLngLat([-122.93800071028194, 47.03298775291821]);
+    // myPopup.setHTML("<span>My favorite grocery store</span>").addTo(map);
+
+    const geojson = {
+        type: 'FeatureCollection',
+        features: [
+            {
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-122.93800071028194, 47.03298775291821]
+                },
+                properties: {
+                    title: 'Trader Joe',
+                    description: 'My favorite grocery store'
+                }
+            },
+        ]
+    };
+    for (const feature of geojson.features) {
+        // create a HTML element for each feature
+        const el = document.createElement('div');
+        el.className = 'joe';
+
+        // make a marker for each feature and add to the map
+        new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
+
+        new mapboxgl.Marker(el)
+            .setLngLat(feature.geometry.coordinates)
+            .setPopup(
+                new mapboxgl.Popup({offset: 25}) // add popups
+                    .setHTML(
+                        `<h3>${feature.properties.title}</h3>
+                    <p>${feature.properties.description}</p>`
+                    )
+            )
+            .addTo(map);
+    }
+
+    $("#btn4").click(function(e) {
+        e.preventDefault();
+        let address = $("#input").val(); // get the value entered in the input field
+        geocode(address, token).then(function(results) {
+            console.log(results);
+            let newMarker = new mapboxgl.Marker();
+            newMarker.setLngLat(results);
+            newMarker.addTo(map);
+            let newAddress = {center: results, zoom: 15};
+
+            map.flyTo(newAddress);
+        });
+    });
+
+    const marker = new mapboxgl.Marker({
+        color: '#F84C4C',
+        className: 'marker'
+    });
+    function animateMarker(timestamp) {
+        marker.setLngLat([
+            -122.89769413880408,
+            Math.sin(timestamp/1000)/50+ 47.03745269091327
+        ]);
+        marker.addTo(map);
+        if(timestamp < 10000) {
+            requestAnimationFrame(animateMarker);
+        } else {
+            alert('the animation to stop after 10 seconds');
+        }
+    }
+
+    // Start the animation.
+    requestAnimationFrame(animateMarker);
 </script>
 </body>
 </html>
