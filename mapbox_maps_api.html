@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+  <!--    Mapbox CDN below-->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        #map {
+            border: 3px solid black;
+            margin: auto;
+            height: 50vh;
+            width: 70vw;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<button id="btn">Zoom it!</button>
+
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script>
+    let token = "pk.eyJ1IjoicnlhbnpoYW5nMTEyMCIsImEiOiJjbGYyeTlrcjAwaWR0M3BsbTJoNzFieDJhIn0.P9nxoSNUCSqT83MpUTJPDA";
+    mapboxgl.accessToken = token;
+
+    let map = new mapboxgl.Map(
+        {
+            container: 'map',
+            style: 'mapbox://styles/mapbox/outdoors-v12',
+            center: [-122.89769413880408, 47.03745269091327],
+            zoom: 10,
+        }
+    );
+    $("#btn").click(function (){
+        map.setZoom(15);
+    })
+
+    let myMarker = new mapboxgl.Marker();
+    myMarker.setLngLat([-122.93800071028194, 47.03298775291821]);
+    myMarker.addTo(map);
+    let myPopup = new mapboxgl.Popup();
+    myPopup.setLngLat([-122.93800071028194, 47.03298775291821]);
+    myPopup.setHTML("<span>My favorite grocery store</span>");
+    myPopup.addTo(map);
+</script>
+</body>
+</html>
