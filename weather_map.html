@@ -58,7 +58,7 @@
     $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${47.03745269091327}&lon=${-122.897694138804081}&appid=${openWeatherKey}`). done(function (data) {
         console.log(data);
     })
-    //initial marker and weather
+    //default marker and weather
     geoCodeForecastWeather("1530 Black Lake Blvd SW, Olympia, WA 98502");
 
     var currentMarker = null;
