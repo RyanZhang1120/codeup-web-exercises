@@ -22,7 +22,7 @@
         <input id="searchBar" class="searchItem ms-2" type="text" placeholder="Enter address">
         <button id="btn" class="searchItem ms-3 bg-primary text-white">Check</button>
     </div>
-    <div class="fiveWeather d-flex">
+    <div class="fiveWeather d-flex justify-content-between mx-3">
         <div class="boxes" id="box1"></div>
         <div class="boxes" id="box2"></div>
         <div class="boxes" id="box3"></div>
@@ -84,25 +84,25 @@
 
                 let html = "";
 
-                html += `<p>${formattedDate}</p>`;
+                html += `<p class="date text-center">${formattedDate}</p>`;
 
-                html += `<p>${data.daily[i].temp.min} &deg;F / ${data.daily[i].temp.max} &deg;F</p>`;
+                html += `<p class="tem text-center my-2">${data.daily[i].temp.min} &deg;F / ${data.daily[i].temp.max} &deg;F</p>`;
 
-                html += `<div><img id="icon" src="${iconurl}" alt="weather icon"></div>`;
+                html += `<div class="icon text-center my-2"><img id="icon" src="${iconurl}" alt="weather icon"></div>`;
 
                 html += '<hr>'
 
-                html += `<p>Description: <b>${data.daily[i].weather[0].description}</b></p>`;
+                html += `<p class="des ms-3 my-2">Description: <b>${data.daily[i].weather[0].description}</b></p>`;
 
-                html += `<p>Humidity: <b>${data.daily[i].humidity}</b></p>`;
-
-                html += `<hr>`
-
-                html += `<p>Wind: <b>${(data.daily[i].wind_speed)}</b></p>`;
+                html += `<p class="hum ms-3 my-2">Humidity: <b>${data.daily[i].humidity}</b></p>`;
 
                 html += `<hr>`
 
-                html += `<p>Pressure: <b>${(data.daily[i].pressure)}</b></p>`;
+                html += `<p class="wind ms-3 my-2">Wind: <b>${(data.daily[i].wind_speed)}</b></p>`;
+
+                html += `<hr>`
+
+                html += `<p class="pre ms-3 my-2"Pressure: <b>${(data.daily[i].pressure)}</b></p>`;
 
                 $(`#box${i + 1}`).html(html);
                 //location += `<p>Current city: $</p>`

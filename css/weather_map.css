@@ -14,3 +14,15 @@
     border:none;
     font-size: small;
 }
+.boxes {
+    border: 1px solid #cac7cb;
+    border-radius: 5px;
+    width: 220px;
+    font-size: 15px;
+}
+.date {
+    background-color: #cac7cb;
+}
+hr {
+    margin: 0 1em;
+}
