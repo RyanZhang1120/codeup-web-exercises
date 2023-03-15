@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="css/weather_map.css">
 </head>
 <body>
-<nav class="navbar bg-primary py-1 d-flex w-100">
+<nav class="navbar bg-primary py-1 d-flex w-100 h-15">
     <h5 class="app text-white my-1 ms-2">Weather App</h5>
-    <p class="current"></p>
+    <div id="current" class="location text-white my-1 me-2"></div>
 </nav>
 <main>
     <div class="search d-flex my-3 ms-4">
-        <p id="place" class="searchItem">Place</p>
+        <p id="place" class="searchItem">Weather Forecast: </p>
         <input id="searchBar" class="searchItem ms-2" type="text" placeholder="Enter address">
-        <button id="btn" class="searchItem ms-3">Find</button>
+        <button id="btn" class="searchItem ms-3 bg-primary text-white">Check</button>
     </div>
     <div class="fiveWeather d-flex">
         <div class="boxes" id="box1"></div>
@@ -46,48 +46,79 @@
             container:'map',
             style: 'mapbox://styles/mapbox/outdoors-v12',
             center: [-122.89769413880408, 47.03745269091327],
-            zoom: 10,
+            zoom: 13,
         }
     );
-    $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${29.51034}&lon=${-98.64661}&appid=${openWeatherKey}`). done(function (data) {
+    $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${47.03745269091327}&lon=${-122.897694138804081}&appid=${openWeatherKey}`). done(function (data) {
         console.log(data);
+        geoCodeForecastWeather("1530 Black Lake Blvd SW, Olympia, WA 98502");
     })
     function geoCodeForecastWeather(searchString) {
-        geocode(searchString, mapBoxKey).then(function (results){
-            console.log(results[0]);
-            console.log(results[1]);
-            $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${results[1]}&lon=${results[0]}&appid=${openWeatherKey}&units=imperial`).done(function (data){
+        geocode(searchString, mapBoxKey).then(function (results) {
+            console.log(results[0]);//lon
+            console.log(results[1]);//lat
+            let marker = new mapboxgl.Marker({ draggable: true });
+            marker.setLngLat([results[0], results[1]]).addTo(map);
+            let newAddress = { center: [results[0], results[1]], zoom: 13 };
+            map.flyTo(newAddress);
 
-                for (let i = 0; i < 5; i++) {
-                    let date = new Date(data.daily[i].dt * 1000);
-                    let formattedDate = date.toISOString().slice(0, 10);
+            // Add dragend event listener to marker
+            marker.on('dragend', function () {
+                let lngLat = marker.getLngLat();
+                updateWeatherInfo(lngLat.lat, lngLat.lng);
+            });
 
-                    let html = "";
+            // Call updateWeatherInfo function with initial marker location
+            updateWeatherInfo(results[1], results[0]);
+        });
+    }
+    function updateWeatherInfo(lat, lng) {
+        $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lng}&appid=${openWeatherKey}&units=imperial`).done(function (data) {
 
-                    html += `<p>${formattedDate}</p>`
+            for (let i = 0; i < 5; i++) {
+                let date = new Date(data.daily[i].dt * 1000);
+                let formattedDate = date.toISOString().slice(0, 10);
 
-                    html += `<p>${data.daily[i].temp.min} &deg;F / ${data.daily[i].temp.max} &deg;F</p>`;
+                var icon = data.daily[i].weather[0].icon;
+                var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
 
-                    html += `<p>Description: <b>${data.daily[i].weather[0].description}</b></p>`;
+                let html = "";
 
-                    html += `<p>Humidity: <b>${data.daily[i].humidity}</b></p>`;
+                html += `<p>${formattedDate}</p>`;
 
-                    html += `<hr>`
+                html += `<p>${data.daily[i].temp.min} &deg;F / ${data.daily[i].temp.max} &deg;F</p>`;
 
-                    html += `<p>Wind: <b>${(data.daily[i].wind_speed)}</b></p>`;
+                html += `<div><img id="icon" src="${iconurl}" alt="weather icon"></div>`;
 
-                    html += `<hr>`
+                html += '<hr>'
 
-                    html += `<p>Pressure: <b>${(data.daily[i].pressure)}</b></p>`;
+                html += `<p>Description: <b>${data.daily[i].weather[0].description}</b></p>`;
 
-                    $(`#box${i+1}`).html(html);
-                }
-            })
-        })
-    };
+                html += `<p>Humidity: <b>${data.daily[i].humidity}</b></p>`;
+
+                html += `<hr>`
+
+                html += `<p>Wind: <b>${(data.daily[i].wind_speed)}</b></p>`;
+
+                html += `<hr>`
+
+                html += `<p>Pressure: <b>${(data.daily[i].pressure)}</b></p>`;
+
+                $(`#box${i + 1}`).html(html);
+                //location += `<p>Current city: $</p>`
+            }
+        });
+            $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${openWeatherKey}&units=imperial`).done(function (data){
+                let location = "";
+                location += `Current city: ${data.name}`;
+
+                $('#current').html(location);
+            });
+    }
     $("#btn").click(function (e){
         e.preventDefault();
         geoCodeForecastWeather($("#searchBar").val());
     })
+
 </script>
 </html>

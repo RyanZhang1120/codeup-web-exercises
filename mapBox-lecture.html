@@ -112,7 +112,64 @@
     //map.flyTo({center: [0, 0], zoom: 5})
    })
 
+  function geoCodeForecastWeather(searchString) {
+    geocode(searchString, mapBoxKey).then(function (results){
+      console.log(results[0]);
+      console.log(results[1]);
+      $.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${results[1]}&lon=${results[0]}&appid=${openWeatherKey}&units=imperial`).done(function (data){
+
+        for (let i = 0; i < 5; i++) {
+          let date = new Date(data.daily[i].dt * 1000);
+          let formattedDate = date.toISOString().slice(0, 10);
+
+          var icon = data.daily[i].weather[0].icon;
+          var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+
+          let html = "";
+
+          html += `<p>${formattedDate}</p>`;
+
+          html += `<p>${data.daily[i].temp.min} &deg;F / ${data.daily[i].temp.max} &deg;F</p>`;
+
+          html += `<div><img id="icon" src="${iconurl}" alt="weather icon"></div>`;
+
+          html += '<hr>'
+
+          html += `<p>Description: <b>${data.daily[i].weather[0].description}</b></p>`;
+
+          html += `<p>Humidity: <b>${data.daily[i].humidity}</b></p>`;
+
+          html += `<hr>`
+
+          html += `<p>Wind: <b>${(data.daily[i].wind_speed)}</b></p>`;
+
+          html += `<hr>`
+
+          html += `<p>Pressure: <b>${(data.daily[i].pressure)}</b></p>`;
+
+          $(`#box${i+1}`).html(html);
+          //location += `<p>Current city: $</p>`
+        }
+
+        let marker = new mapboxgl.Marker();
+        marker.setLngLat([results[0], results[1]]).addTo(map);
+        let newAddress = {center: [results[0], results[1]], zoom: 15};
+        map.flyTo(newAddress);
+      })
+      $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&appid=${openWeatherKey}&units=imperial`).done(function (data){
+        let location = "";
+        location += `<p>Current city: ${data.name}</p>`;
+
+        $('#current').html(location);
+      })
+    })
+  };
+  $("#btn").click(function (e){
+    e.preventDefault();
+    geoCodeForecastWeather($("#searchBar").val());
+  })
 </script>
 
 </body>
 </html>
+

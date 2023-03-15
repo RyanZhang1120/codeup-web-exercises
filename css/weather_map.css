@@ -1,7 +1,16 @@
+
+* {
+    font-family: 'Nunito Sans', serif;
+}
 #map {
     height: 400px;
     width: auto;
 }
 .searchItem {
     height: 25px;
+}
+#btn {
+    border-radius: 5px;
+    border:none;
+    font-size: small;
 }

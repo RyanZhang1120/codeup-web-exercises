@@ -63,7 +63,7 @@
   console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${29.51034}&lon=${-98.64661}&appid=${openWeatherKey}`);
   $.get('https://api.openweathermap.org/data/2.5/weather', {
     APPID: openWeatherKey,
-    q: "San Antonio, US"
+    q: "San Antonio, TX 78250"
   }). done(function (data) {
     console.log(data);
   })
@@ -124,48 +124,7 @@
   //Need to put those values from array > into url
   //I say let's make a function!
 
-  function geoCodeBuildWeather(searchString) {
-    let html = "";
-    geocode(searchString, mapBoxKey).then(function (results) {
-      console.log(results[0]);
-      console.log(results[1]);
 
-      console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&appid=${openWeatherKey}&units=imperial`);
-
-      $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${results[1]}&lon=${results[0]}&appid=${openWeatherKey}&units=imperial`).done(function (data) {
-
-
-        html += `<h4>Current location: ${data.name}</h4>`;
-
-        html += `<h4>Current weather: ${data.weather[0].description}</h4>`;
-
-
-        html += `<h5>Current average wind speed: ${parseInt(data.wind.speed)} knots</h5>`;
-
-        html += `<h5>Current Temperature: ${parseInt(data.main.temp)} &deg;</h5>`;
-
-
-        html += `<h5>Current humidity: ${parseInt(data.main.humidity)}</h5>`;
-
-        $("#weatherBody").html(html);
-
-
-      })
-
-    })
-  };
-
-  //Fourth: If we're feelin' frisky, can we get an input box > to send value to geocode > which makes the above happen
-
-  //I need: to add an input with a button
-
-
-  //button>onClick take input.value and pass to function to renderHtml thru geoCodeBuildWeather(inputSearch)
-
-  $("#myBtn").click(function(e){
-    e.preventDefault();
-    geoCodeBuildWeather($("#searchInput").val());
-  })
 
 </script>
 </html>
