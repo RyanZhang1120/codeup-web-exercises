@@ -77,6 +77,26 @@
                 let lngLat = currentMarker.getLngLat();
                 updateWeatherInfo(lngLat.lat, lngLat.lng);
             });
+            //add click event listener to map
+            map.on('click', function(e) {
+                //get the coordinates of the clicked point
+                let lngLat = e.lngLat;
+                if(currentMarker !== null) {
+                    currentMarker.remove();
+                }
+
+                //create a new marker at the clicked point
+                currentMarker = new mapboxgl.Marker({ draggable: true });
+                currentMarker.setLngLat(lngLat).addTo(map);
+                //make marker still draggable
+                currentMarker.on('dragend', function () {
+                    let lngLat = currentMarker.getLngLat();
+                    updateWeatherInfo(lngLat.lat, lngLat.lng);
+                });
+
+                //call the updateWeatherInfo function with the clicked point's coordinates
+                updateWeatherInfo(lngLat.lat, lngLat.lng);
+            });
 
             // Call updateWeatherInfo function with marker location
             updateWeatherInfo(results[1], results[0]);
