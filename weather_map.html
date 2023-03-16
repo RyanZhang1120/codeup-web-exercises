@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/weather_map.css">
 </head>
 <body>
+<div class="background-images"></div>
 <!--navigation bar-->
 <nav class="navbar bg-primary py-1 d-flex w-100 h-15">
     <h5 class="app text-white my-1 ms-2">Weather App</h5>
@@ -136,6 +137,25 @@
                 html += `<p class="pre ms-3 my-2">Pressure: <b>${(data.daily[i].pressure)}</b></p>`;
 
                 $(`#box${i + 1}`).html(html);
+            }
+
+            if(data.daily[0].weather[0].main === "Snow") {
+                $('.background-images').css(
+                    'background-image', 'url("/img/weather/snow.png")'
+                );
+            } else if(data.daily[0].weather[0].main === "Rain" || data.daily[0].weather[0].main === "Thunderstorm") {
+                $('.background-images').css(
+                    'background-image', 'url("/img/weather/rainy.png")'
+                );
+            } else if (data.daily[0].weather[0].main === "Clear") {
+                $('.background-images').css(
+                    'background-image', 'url("/img/weather/sunny.png")'
+
+                );
+            } else {
+                $('.background-images').css(
+                    'background-image', 'url("/img/weather/cloudy.png")'
+                );
             }
         });
             $.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${openWeatherKey}&units=imperial`).done(function (data){
