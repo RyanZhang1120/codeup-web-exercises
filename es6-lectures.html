@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ES6 [not elder scrolls] / MFR</title>
+</head>
+<body>
+
+</body>
+
+<script>
+  //Exponent op.
+
+  //This is a great example of 'syntactical sugar' - no REINVENTION of the wheel, a REFINEMENT of the wheel ("Write less, do more" kind of idea"
+
+  //in the before times: we would need to call the Math objects .pow method and add two arguments to get a return of the correct result of the math
+  // Math.pow(num, num)
+
+  //es6: new operator saves us some typing
+  // num ** num
+
+  console.log(Math.pow(8, 8));
+  console.log(8 ** 8);
+
+  //let | const
+  //What is the difference between var and let?
+  //Reassignable
+  //let has a different scoping to it | block scope
+  //let also has difference in behavior
+
+  //What happens when I redeclare var vs redeclare let?
+  var myString = "Kenny";
+
+  console.log(myString);
+
+  var myString = "Kenneth";
+
+  console.log(myString);
+
+  let stringOne = "Howell";
+  //let stringOne = "Howie"; //DANGER, ERROR: redeclare error
+  //let = does not let you redeclare ^
+
+  //What happens if I try to access a variable in a place where it is out of scope? or a different layer?
+
+  let myName = "Kenneth";
+
+
+
+  if (true){
+    let myName = "Andrew";
+    console.log(myName);
+  }
+
+  console.log(myName);
+
+  var myMiddleName = "Andrew";
+
+  if (true){
+    var myMiddleName = "Randy";
+    console.log(myMiddleName);
+  }
+
+  console.log(myMiddleName);
+  console.log("~~~~~~~");
+  //Okay - so there's a SCOPING difference (block vs function)
+
+  //Additionally, what about this example?
+
+  console.log(age)
+  var age = 34;
+  console.log(age);
+
+  // console.log(ageAfterBirthday);
+  //TDZ
+  //TDZ
+  //TDZ
+  //TDZ
+  //TDZ
+  //TDZ
+  //TDZ
+  //TDZ
+  //TDZ
+  //TDZ
+  //TDZ
+  //TDZ
+  //TDZ
+  let ageAfterBirthday = 35;
+
+  console.log(ageAfterBirthday);
+
+  //temporal dead zone = all of the area of code up to the point you initialize and declare something with 'let'
+
+  //const == variable we do not have an ability to reassign
+
+  //Interview question 2: Can I reassign the properties of a const object?
+
+  const me = {name: "Kenny", age: age, car: "Silverado"}
+
+  console.log(me.name);
+
+  me.name = "Kenneth";
+
+  console.log(me.name);
+
+  //Can I do something similar with const arrays?
+
+  //Yar
+
+  const lunchArray = ["enchiladas cremas", "shrimp"];
+
+  console.log(lunchArray[0]);
+
+  lunchArray[0] = "enchiladas verdes";
+
+  console.log(lunchArray[0]);
+
+  lunchArray.pop();
+
+  console.log(lunchArray);
+
+  //template strings / interpolation [back ticks needed - the key with the tilde ~ on your keyboard]
+
+  let catName = "Peanut";
+  let catName2 = "Pinch";
+  let catName3 = "Pumpkin";
+
+  console.log(`Hey y'all, I have ${1 + 1 + 1} cats - the cat's names are ${catName}, ${catName2}, ${catName3}`);
+
+  console.log(`It is ${catName2 === "Punch" && catName === "Peanut" && catName3 === "Pumpkin"} that the second catName variable says "Punch" inside of it, the first has "Peanut", and the third has "Pumpkin`);
+
+  //enhanced for/of loop
+  //for (let element of iterable) {}
+  //for (let object of array) {}
+  //for (let element of array) {}
+
+  let arrayGameSystem = ["Sega Genesis", "Super Nintendo", "Atari 2600", "PlayStation 1"]
+
+  for (let gameSystemString of arrayGameSystem){
+    console.log(`Heres a game system: ${gameSystemString}`);
+  }
+
+  let booksArrayObj = [
+    {
+      title: "Raise High the roof beams carpenters",
+      author: "J.D. Salinger"
+    }, {
+      title: "Slaughter House Five",
+      author: "Kurt Vonnegut"
+    }, {
+      title: "A Good Man Is Hard To Find",
+      author: "Flannery O'Connor"
+    }]
+
+
+  for(let book of booksArrayObj){
+    console.log(`Here's a good book or story written by ${book.author} - check out ${book.title} `);
+  }
+
+  //arrow function
+
+  let sayHello = function(name) {
+    alert("Hello " + name)
+  }
+
+  let sayHelloArrow = (name) => alert("Hello " + name);
+
+  //default params - add a default into the parenthesis of the function signature
+  let forLunch = (lunch = "salad") => "Here's my lunch plan: I want to have some " + lunch;
+
+  //object property variable assignment shorthands
+  //object destructuring
+
+  // let myHouseAddress = "8646 Sunny Oaks";
+  // let homeType = "single story";
+  // var object = {
+  //     myHouseAddress: myHouseAddress,
+  //     homeType: homeType
+  // }
+
+  let homeAddress = "8646 Sunny Oaks";
+  let homeType = "single story";
+  let object = {
+    homeAddress,
+    homeType
+  }
+
+  let userName = "ken2cool";
+  let password = "mypw";
+
+  let userObj = {userName, password}
+
+  console.log(userObj);
+
+  let pizzaObject = {
+
+    crust: ["original", "cheese-stuffed"],
+    toppings: ["mushrooms", "onions", "chicken"],
+    sauce: "white alfredo sauce",
+    price: 3.14,
+    size: "21in",
+    sides: ["2 liter big red", "marinara", "bread stricks"],
+    deliveryInfo: {
+      address: "8646 Sunny Oaks",
+      name: "Kenny Powell",
+      instructions: "Leave on patio my cats will attack u"
+    }
+  }
+  let pizzaObject2 = {
+
+    crust: ["thin", "cajun-seasoning"],
+    toppings: ["mushrooms", "chicken"],
+    sauce: "marinara",
+    price: 9.99,
+    size: "18in",
+    sides: ["2 dr. pepper", "ranch", "chicken wings"],
+    deliveryInfo: {
+      address: "9027 Richmond hill St.",
+      name: "Kenny Powers",
+      instructions: "knock on the door I want to check the pizza first"
+    }
+  }
+
+  // var crust = pizzaObject.crust;
+  // var toppings = pizzaObject.toppings;
+  // var sauce = pizzaObject.sauce. . . . . .
+  //JEEZ I wish there was a better way [you in 2014 :(]
+
+  //Destructuring: obj + array
+  //objects need object notation {}
+  let {crust, toppings, sauce, price, size, sides, deliveryInfo} = pizzaObject;
+
+  let {address, name, instructions} = deliveryInfo;
+
+  //arrays need array notation []
+  let [side1, side2, side3] = sides;
+
+  console.log(crust);
+  console.log(toppings);
+  console.log(sauce);
+  console.log(price);
+  console.log(size);
+  console.log(side1);
+  console.log(side2);
+  console.log(side3);
+  console.log(name);
+  console.log(address);
+  console.log(instructions);
+
+  //What about a function?
+  function pizzaTime({crust, toppings, sauce, price, size, sides, deliveryInfo}){
+    console.log(crust);
+    console.log(toppings);
+    console.log(sauce);
+    console.log(price);
+    console.log(size);
+    console.log(sides);
+    console.log(deliveryInfo);
+  }
+
+  //Longer / older way, but not WRONG =
+  // function pizzaTime(object){
+  //     var crust = object.crust;
+  //     var toppings = object.toppings;
+  //     var sauce = object.sauce;
+  //     var price = object.price;
+  //     var . . .
+  // crust.log . . . etc.
+  // }
+
+  let pizzaArray = [pizzaObject, pizzaObject2];
+
+  for(let pizza of pizzaArray){
+    pizzaTime(pizza);
+  }
+  //after this: MFR
+
+  //. . . < maybe show spread operator  now or in MFR?
+
+</script>
+</html>

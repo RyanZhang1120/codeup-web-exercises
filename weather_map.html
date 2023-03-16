@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/weather_map.css">
 </head>
 <body>
+<!--use it to style background images-->
 <div class="background-images"></div>
 <!--navigation bar-->
 <nav class="navbar bg-primary py-1 d-flex w-100 h-15">
@@ -138,7 +139,7 @@
 
                 $(`#box${i + 1}`).html(html);
             }
-
+            //add background images in different conditions
             if(data.daily[0].weather[0].main === "Snow") {
                 $('.background-images').css(
                     'background-image', 'url("/img/weather/snow.png")'
@@ -150,7 +151,6 @@
             } else if (data.daily[0].weather[0].main === "Clear") {
                 $('.background-images').css(
                     'background-image', 'url("/img/weather/sunny.png")'
-
                 );
             } else {
                 $('.background-images').css(
