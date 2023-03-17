@@ -36,7 +36,7 @@ const users = [
 const name = 'ryan';
 const email = 'ryan.zhang1120@gmail.com';
 const languages = ['html', 'css','javascript'];
-var me = {name, email, languages};
+var me = [name, email, languages];
 // TODO: rewrite the object literal using object property shorthand
 users.push({
     name: name,
