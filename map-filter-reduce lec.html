@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ES6 [not elder scrolls] / MFR</title>
+</head>
+<body>
+
+</body>
+
+<!--<script src="js/es6-intro-code.js"></script>-->
+<script>
+
+  //Map: I am going through ALL elements and. . doing some stuff
+  //Remember our emojis: We took ALL the ingredient emojis from the array. . and all those emojis were cooked!
+
+  let myNums = [7, 222, 13, 21];
+
+  // let myNumsTimesTwo = myNums.map(function(num){
+  //     return num * 2;
+  // })
+
+  //refactor to arrow =>
+  //One liner
+  // let myNumsTimesTwo = myNums.map( (num) => (num * 2))
+
+  //arrow multi statement syntax
+  let myNumsTimesTwo = myNums.map( (num) => {
+    console.log(num);
+    return num * 2;
+  })
+
+  console.log(myNums);
+  console.log(myNumsTimesTwo);
+
+  let myStrings = ["kEnNy", "hOweLl", "SaN", "anTonIo"];
+
+  //let's clean these strings up with map - I want them all lower case
+
+  let cleanStrings = myStrings.map((string) => `Here's a string: ${string.toLowerCase()}`)
+
+  console.log(cleanStrings);
+
+  let names = ["Kenneth Howell", "Anthony Chhor", "Austin Joiner", "Genesis Sarabia"];
+
+  //How could I use map to create an object that is {fName: firstName, lName: lastName};
+
+  let peopleObjects = names.map(function(nameString){
+
+    let arrayName =  nameString.split(' ');
+
+    return {fName: arrayName[0], lName: arrayName[1]};
+
+  })
+  console.log(peopleObjects);
+
+  //Filter - I want to go through my array and check is this element. .
+
+  let numberSequence = [1,2,3,4,5,6,7,8];
+
+  //I want to ask filter: Hey, filter - can you give me back only odds from my number sequence?
+
+  let oddNumbers = numberSequence.filter(function(number){
+
+    return number % 2 !== 0; //condition < only return numbers that meet THIS expression criteria
+  })
+
+  console.log(oddNumbers);
+
+  let aNames = names.filter(function(name){
+    return name[0] === 'A';
+  })
+
+  console.log(aNames);
+
+  let boolLiterals = [true, true, false, false, true, 1];
+
+  let trueBoolLiterals = boolLiterals.filter(function(boolean){
+
+    return boolean == true;
+
+  })
+
+  console.log(trueBoolLiterals);
+
+  //How about filtering an array of user objects?
+
+  let userObjects = [
+    {
+      userName: "ken2cool",
+      password: "mypw",
+      isAdmin: true
+
+    },{
+      userName: "luisG",
+      password: "pwpw",
+      isAdmin: false
+    },{
+      userName: "geneS",
+      password: "pwpwpw",
+      isAdmin: true
+    }
+  ];
+
+  let myAdmins = userObjects.filter(function(user){
+    return user.isAdmin === true;
+  })
+
+  console.log(myAdmins);
+
+  for(admin of myAdmins){
+      console.log(`Here's an administrator: ${admin.userName}`);
+  }
+
+  //Reduce < A little bit ~ ~ stranger ~ ~
+  console.log(`~~~~~~~~~`)
+  let studentsFavNums = [4028, 13, 3, 21, 6, 47, 777];
+
+  //.method(callbackFn()) < callbackFunctions are arguments
+  //Two parameters:
+  // * "acculumator"/"sum"/"bucket" < storing the single value loop by loop
+  // * element parameter - for us, I named it "number" to represent one 'number' from an element of studentFavNums
+
+  let numsAdded = studentsFavNums.reduce(function(accumulator, number){
+            console.log("What is our accumulator " + accumulator);
+            console.log("What is our number? " + number);
+            return accumulator + number;
+          },
+          //This second argument is OPTIONAL - without it, the accumulator is set to the FIRST element of the array given
+          //Otherwise: The accumulator will begin with the following provided value
+          .50  )
+
+  console.log(numsAdded);
+
+  let salespeople = [
+    {name: "David Renteria", sales: 18},
+    {name: "Kenny Howell", sales: 12},
+    {name: "Jenna Devora", sales: 11},
+    {name: "Travis Gomez", sales: 15}
+  ]
+
+  //What was our total sales number?
+  let sold = salespeople.reduce(function(totalSales,salesperson){
+    return totalSales + salesperson.sales;
+  }, 0)
+
+  console.log(`Good work this month - Howell Motors sold ${sold} cars this month, let's go party`);
+
+  //Other real world stuff: How long do our users stay logged in on average? Maybe you get a sum of totalSecondsOnline from .reduce?
+  //
+
+  let namesString = names.reduce(function(stringAccum, string){
+    return stringAccum + " | " + string;
+  })
+
+  console.log(namesString);
+
+  let salesNames = salespeople.reduce(function(stringAccum, salesperson){
+    return stringAccum + salesperson.name + " | ";
+  }, "Here's some of our salespeople: ")
+
+  console.log(salesNames);
+  console.log("~~~ - ~~~");
+  //Spread operator - pardon my dust, this is DLC content
+
+  //Spreading out an array:
+  console.log(...names);
+
+  //Spread out a string var/ele/etc. (give me the individual characters of the string)
+
+  //This is binary: operates on multiple things [primitive, var, etc.]
+  console.log(2 + 2);
+  //This is unary: operates on one 'thing' [primitive, var, etc.]
+  console.log(...names[0]);
+
+  function sumNumbers(num1, num2, num3, num4, num5, num6, num7){
+    return num1+num2+num3+num4+num5+num6+num7;
+  }
+
+  console.log(...studentsFavNums)
+
+  console.log(sumNumbers(1, 2, 3, 4, 5, 6, 7));
+
+  console.log(sumNumbers(...studentsFavNums));
+
+  //How about combining two arrays?
+
+  let myLunchFoods = ["rice and beans", "pizza", "porkchops", "shrimp"];
+
+  let studentLunchFoods = ["gumbo", "tacos", "pb & j", "lobster mac and cheese", "fries", "protein shakes"];
+
+  //How can the spread operator help me add these two arrays together?
+
+  let ourLunches = [...myLunchFoods, ...studentLunchFoods]
+
+  console.log(ourLunches);
+
+  //Salespeople spread?
+
+  console.log(...salespeople)
+</script>
+</html>
