@@ -53,7 +53,7 @@ console.log(years);
 //calculate the average
 var average = years/users.length;
 console.log(average);
-//calculate the average
+//find the longest email
 var longestEmail = users.reduce(function (longest, user){
     if(user.email.length > longest.length) {
         return user.email;
