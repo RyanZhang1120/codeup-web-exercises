@@ -1,4 +1,42 @@
+:root {
+    --color-accent-normal: #BE3455;
+    --color-accent-dark: #770b24;
+    --color-accent-shadow: #4d0314;
+    --color-primary-dark: #0d1a26
+}
+.bg-accent-normal {
+    background-color: var(--color-accent-normal);
+}
+
+.color-accent-normal {
+    color: var(--color-accent-normal);
+}
+
+.bg-accent-dark {
+    background-color: var(--color-accent-dark);
+}
+
+.color-accent-dark {
+    color: var(--color-accent-dark);
+}
+
+.bg-primary-dark {
+    background-color: var(--color-primary-dark);
+}
+
+.color-primary-dark {
+    color: var(--color-primary-dark);
+}
+
+*{
+    font-family: 'Metrophobic', sans-serif;
+}
+
 header {
-    background-image: url("/img/title-bg.png");
+    background-image: url("img/title-bg.png");
     height: 150px;
+}
+body {
+    font-size: .75rem;
+    background-color: var(--color-primary-dark);
 }
