@@ -46,6 +46,11 @@ body, .nav-bar {
     margin-left: 4em;
 }
 
+.logo {
+    width: 80px;
+    height: 80px;
+}
+
 @media screen and (max-width: 992px) {
     .navbar-nav {
         float: right;
@@ -55,6 +60,8 @@ body, .nav-bar {
     }
     .active {
         display: none;
+        padding-top: 0;
+        margin-top: 0;
     }
 }
 
