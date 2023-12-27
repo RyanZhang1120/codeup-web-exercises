@@ -115,7 +115,6 @@ h5 {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    text-align: center;
     color: white;
     border: 7px solid white;
     line-height: 85px;
@@ -125,6 +124,8 @@ h5 {
 .icon p {
     font-size: small;
     font-family: 'Anton', sans-serif;
+    text:center;
+    margin:0;
 }
 
 .icons {
