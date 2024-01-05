@@ -71,3 +71,13 @@ var names = users.reduce(function (list, name){
     }
 }, 'Your instructors are: ')
 console.log(names);
+//unique list of languages
+const uniqueLanguagesSet = new Set(users.reduce((accumulator, user) => {
+    return accumulator.concat(user.languages);
+}, []));
+
+console.log(uniqueLanguagesSet);
+
+const uniqueLanguages = Array.from(uniqueLanguagesSet);
+
+console.log(uniqueLanguages);
